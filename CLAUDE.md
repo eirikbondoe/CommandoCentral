@@ -29,10 +29,6 @@ Tests match on error message text (`"Idea title cannot be empty"`, `"Invalid ide
 
 The README states that the MVP deliberately excludes a web UI, database persistence, authentication, external APIs and a CLI. Planned next steps are a CLI, SQLite persistence, and project/task entities.
 
-## Known issue
+## CI
 
-File contents are misplaced:
-- `.github/workflows/tests.yml` contains the Python source of the service tests (meant to be `tests/skape/test_service.py`, which is listed in the README but does not exist).
-- `.gitignore` contains the GitHub Actions workflow (Python 3.12, `pip install -e .`, `pytest -q`) meant for `tests.yml`.
-
-As a result CI does not run, nothing is git-ignored (`__pycache__/` and `.pytest_cache/` show up as untracked, so do not commit them), and `pytest` collects only `test_models.py`.
+`.github/workflows/tests.yml` runs `pip install -e .` and `pytest -q` on Python 3.12, only for pushes and pull requests targeting `main`.
