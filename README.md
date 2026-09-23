@@ -1,1 +1,70 @@
 # CommandoCentral
+
+CommandoCentral is a project focused on building a practical, extensible system around the Skape concept. The current MVP establishes the core idea domain and test-first workflow needed to grow the platform safely.
+
+## Skape MVP
+
+Skape currently includes a minimal domain model and service layer for managing ideas:
+
+- create ideas
+- validate titles
+- track creation timestamps
+- maintain supported statuses
+- list and update ideas
+- raise clear errors for invalid input and missing ideas
+
+## Project structure
+
+```text
+CommandoCentral/
+├── .github/
+│   └── workflows/
+│       └── tests.yml
+├── README.md
+├── pyproject.toml
+├── src/
+│   └── commando_central/
+│       └── skape/
+│           ├── __init__.py
+│           ├── models.py
+│           └── service.py
+├── tests/
+│   └── skape/
+│       ├── test_models.py
+│       └── test_service.py
+└── .gitignore
+```
+
+## Installation
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -e .
+```
+
+## Running tests
+
+```bash
+pytest
+```
+
+## Current scope
+
+This MVP deliberately stays small and intentionally does not include:
+
+- web UI
+- database persistence
+- authentication
+- external APIs
+- CLI shell
+- project orchestration beyond the idea domain
+
+## Next possible steps
+
+1. add a CLI for creating and updating ideas
+2. persist ideas in SQLite
+3. introduce project and task entities
+4. add integration tests with persistence
+5. connect the domain to the rest of CommandoCentral
