@@ -31,3 +31,22 @@ def test_cli_returns_not_found_error_when_updating_unknown_idea():
     shell.onecmd("status does-not-exist active")
 
     assert "does-not-exist" in stdout.getvalue()
+
+
+def test_cli_can_manage_projects_and_tasks():
+    service = SkapeService()
+    stdout = StringIO()
+    shell = SkapeCli(service=service, stdout=stdout)
+
+    shell.onecmd('project_create "Delivery project" -d "Phase 1"')
+    project = service.list_projects()[0]
+    shell.onecmd(f'task_create {project.id} "Write docs" -d "Outline scope"')
+    task = service.list_tasks(project.id)[0]
+    shell.onecmd(f"task_status {task.id} in_progress")
+    shell.onecmd(f"task_list --project-id {project.id}")
+
+    assert service.get_task(task.id).status == "in_progress"
+    output = stdout.getvalue()
+    assert "Project created:" in output
+    assert "Task created:" in output
+    assert "Task updated:" in output

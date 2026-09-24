@@ -1,4 +1,12 @@
-from .models import Idea
-from .service import IdeaNotFoundError, SkapeService
+from .models import Idea, Project, Task
+from .service import IdeaNotFoundError, ProjectNotFoundError, SkapeService, TaskNotFoundError
 
-__all__ = ["Idea", "IdeaNotFoundError", "SkapeService"]
+__all__ = [
+    "Idea",
+    "Project",
+    "Task",
+    "IdeaNotFoundError",
+    "ProjectNotFoundError",
+    "TaskNotFoundError",
+    "SkapeService",
+]
