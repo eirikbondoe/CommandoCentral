@@ -14,11 +14,13 @@ CommandoCentral is a project focused on building a practical, extensible system 
 Skape currently includes a minimal domain model and service layer for managing ideas:
 
 - create ideas
+- create projects and tasks
 - validate titles
 - track creation timestamps
 - maintain supported statuses
 - list and update ideas
-- persist ideas in SQLite
+- list and update projects and tasks
+- persist ideas, projects and tasks in SQLite
 - raise clear errors for invalid input and missing ideas
 
 ## Project structure
@@ -112,6 +114,12 @@ Available commands:
 - `create "<title>" -d "<description>"`
 - `list`
 - `status <idea_id> <draft|active|completed|archived>`
+- `project_create "<title>" -d "<description>"`
+- `project_list`
+- `project_status <project_id> <draft|active|completed|archived>`
+- `task_create <project_id> "<title>" -d "<description>"`
+- `task_list [--project-id <project_id>]`
+- `task_status <task_id> <todo|in_progress|completed|blocked>`
 - `exit` / `quit`
 
 ## Current scope
@@ -125,6 +133,6 @@ This MVP deliberately stays small and intentionally does not include:
 
 ## Next possible steps
 
-1. introduce project and task entities
-2. add deeper integration tests around persisted workflows
-3. connect the domain to the rest of CommandoCentral
+1. add deeper integration tests around persisted workflows
+2. connect the domain to the rest of CommandoCentral
+3. expose the domain via API or orchestration layer
