@@ -1,0 +1,4 @@
+project_id = "commandocentral"
+
+[functions.notion-sync]
+verify_jwt = false
