@@ -106,7 +106,6 @@ This MVP deliberately stays small and intentionally does not include:
 - database persistence
 - authentication
 - external APIs
-- CLI shell
 - project orchestration beyond the idea domain
 
 ## Next possible steps
