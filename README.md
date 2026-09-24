@@ -20,15 +20,21 @@ CommandoCentral/
 ├── .github/
 │   └── workflows/
 │       └── tests.yml
+├── .env.example
 ├── README.md
 ├── pyproject.toml
 ├── src/
 │   └── commando_central/
+│       ├── integrations/
+│       │   ├── __init__.py
+│       │   └── connectivity.py
 │       └── skape/
 │           ├── __init__.py
 │           ├── models.py
 │           └── service.py
 ├── tests/
+│   ├── integrations/
+│   │   └── test_connectivity.py
 │   └── skape/
 │       ├── test_models.py
 │       └── test_service.py
@@ -43,6 +49,27 @@ source .venv/bin/activate
 pip install -U pip
 pip install -e .
 ```
+
+## Integrations bootstrap (Notion, GitHub, Supabase)
+
+1. Copy `.env.example` to `.env` and fill in real values.
+2. Export the same variables in your shell/session.
+3. Run connection checks:
+
+```bash
+python -m commando_central.integrations.connectivity
+```
+
+Required variables:
+
+- `NOTION_TOKEN`
+- `NOTION_DATABASE_ID`
+- `SUPABASE_URL`
+- `SUPABASE_ANON_KEY`
+
+Optional:
+
+- `GITHUB_TOKEN` (recommended for higher API rate limits)
 
 ## Running tests
 
