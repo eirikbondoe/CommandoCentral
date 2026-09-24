@@ -82,8 +82,13 @@ class SkapeCli(cmd.Cmd):
         return True
 
 
-def run_cli(stdin: TextIO | None = None, stdout: TextIO | None = None) -> int:
-    shell = SkapeCli(stdout=stdout)
+def run_cli(
+    stdin: TextIO | None = None,
+    stdout: TextIO | None = None,
+    *,
+    db_path: str = "skape.db",
+) -> int:
+    shell = SkapeCli(service=SkapeService(db_path=db_path), stdout=stdout)
     if stdin is not None:
         shell.stdin = stdin
         shell.use_rawinput = False
@@ -92,7 +97,10 @@ def run_cli(stdin: TextIO | None = None, stdout: TextIO | None = None) -> int:
 
 
 def main() -> int:
-    return run_cli()
+    parser = argparse.ArgumentParser(description="Skape CLI")
+    parser.add_argument("--db", default="skape.db", help="Path to SQLite database file.")
+    args = parser.parse_args()
+    return run_cli(db_path=args.db)
 
 
 if __name__ == "__main__":

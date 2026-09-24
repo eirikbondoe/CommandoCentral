@@ -11,6 +11,7 @@ Skape currently includes a minimal domain model and service layer for managing i
 - track creation timestamps
 - maintain supported statuses
 - list and update ideas
+- persist ideas in SQLite
 - raise clear errors for invalid input and missing ideas
 
 ## Project structure
@@ -30,12 +31,14 @@ CommandoCentral/
 │       │   └── connectivity.py
 │       └── skape/
 │           ├── __init__.py
+│           ├── cli.py
 │           ├── models.py
 │           └── service.py
 ├── tests/
 │   ├── integrations/
 │   │   └── test_connectivity.py
 │   └── skape/
+│       ├── test_cli.py
 │       ├── test_models.py
 │       └── test_service.py
 └── .gitignore
@@ -79,7 +82,7 @@ pytest
 
 ## CLI (next step implemented)
 
-Start the interactive Skape CLI:
+Start the interactive Skape CLI (uses `skape.db` by default):
 
 ```bash
 python -m commando_central.skape.cli
@@ -89,6 +92,12 @@ or after installation:
 
 ```bash
 skape
+```
+
+use a custom SQLite path:
+
+```bash
+skape --db ./data/skape.db
 ```
 
 Available commands:
@@ -103,15 +112,12 @@ Available commands:
 This MVP deliberately stays small and intentionally does not include:
 
 - web UI
-- database persistence
 - authentication
 - external APIs
 - project orchestration beyond the idea domain
 
 ## Next possible steps
 
-1. add a CLI for creating and updating ideas
-2. persist ideas in SQLite
-3. introduce project and task entities
-4. add integration tests with persistence
-5. connect the domain to the rest of CommandoCentral
+1. introduce project and task entities
+2. add deeper integration tests around persisted workflows
+3. connect the domain to the rest of CommandoCentral
