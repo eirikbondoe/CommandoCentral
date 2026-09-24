@@ -137,7 +137,7 @@ def main() -> int:
         status = "OK" if result.ok else "FEIL"
         print(f"[{status}] {result.service}: {result.message}")
 
-    return 0 if all(result.ok for result in results) else 1
+    return 0 if not missing and all(result.ok for result in results) else 1
 
 
 if __name__ == "__main__":
