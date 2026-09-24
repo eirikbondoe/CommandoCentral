@@ -1,3 +1,10 @@
+Metadata-Version: 2.4
+Name: commando-central
+Version: 0.1.0
+Summary: Skape MVP for CommandoCentral
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+
 # CommandoCentral
 
 CommandoCentral is a project focused on building a practical, extensible system around the Skape concept. The current MVP includes a Python domain/service layer and a Supabase framework for persistent data, integrations, and multilingual content.
