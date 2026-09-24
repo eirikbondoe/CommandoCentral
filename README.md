@@ -77,6 +77,27 @@ Optional:
 pytest
 ```
 
+## CLI (next step implemented)
+
+Start the interactive Skape CLI:
+
+```bash
+python -m commando_central.skape.cli
+```
+
+or after installation:
+
+```bash
+skape
+```
+
+Available commands:
+
+- `create "<title>" -d "<description>"`
+- `list`
+- `status <idea_id> <draft|active|completed|archived>`
+- `exit` / `quit`
+
 ## Current scope
 
 This MVP deliberately stays small and intentionally does not include:
