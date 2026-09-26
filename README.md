@@ -2,6 +2,33 @@
 
 CommandoCentral is a project focused on building a practical, extensible system around the Skape concept. The current MVP establishes the core idea domain and test-first workflow needed to grow the platform safely.
 
+## Language and internationalization
+
+CommandoCentral is built as a multilingual application from the start.
+Our goal is **fullspråklighet**: the system should be usable, understandable, and extendable across languages without language becoming a technical limitation.
+
+Language support is therefore part of the architecture, not an afterthought.
+
+### Principles
+
+- all user-facing text should be translatable
+- the system should support Unicode and different writing systems
+- language should be selectable per user or context
+- dates, numbers, and other formats should be localizable
+- missing translations should be handled safely with fallbacks
+- new features should be evaluated against the goal of fullspråklighet
+
+### Architecture rule
+
+No new functionality should be introduced in a way that locks the system to a single language.
+
+This means:
+
+- no hardcoded UI text in domain logic
+- translations should stay separate from code and business rules
+- data models and APIs must tolerate multilingual content
+- default behavior should remain language-agnostic, with a clear fallback strategy
+
 ## Skape MVP
 
 Skape currently includes a minimal domain model and service layer for managing ideas:
